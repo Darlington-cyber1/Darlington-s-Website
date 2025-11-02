@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darlington Owusu - Website Designer & Application Developer</title>
+    <meta name="description" content="Professional website designer and application developer specializing in elegant digital experiences and innovative solutions." />
+    <meta name="author" content="Darlington Owusu" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --bg-dark: #0a0e1a;
+            --card-dark: #111827;
+            --text-light: #f8fafc;
+            --primary: #3fb8e3;
+            --primary-dark: #0891b2;
+            --accent: #fbbf24;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) translateX(-50%); }
+            50% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .animate-bounce {
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card:hover {
+            border-color: rgba(63, 184, 227, 0.5);
+            box-shadow: 0 8px 32px rgba(63, 184, 227, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(63, 184, 227, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .btn-outline {
+            border: 2px solid rgba(63, 184, 227, 0.5);
+            color: var(--text-light);
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(63, 184, 227, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .divider {
+            width: 96px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 0 auto 2rem;
+            border-radius: 999px;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(63, 184, 227, 0.1), rgba(8, 145, 178, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+        
+        .blob-1 {
+            width: 384px;
+            height: 384px;
+            background-color: rgba(63, 184, 227, 0.1);
+            top: 25%;
+            left: 25%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .blob-2 {
+            width: 384px;
+            height: 384px;
+            background-color: rgba(251, 191, 36, 0.1);
+            bottom: 25%;
+            right: 25%;
+            animation: pulse 4s ease-in-out infinite 1s;
+        }
+        
+        .icon {
+            width: 32px;
+            height: 32px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .icon-sm {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto text-center animate-fade-in">
+            <div class="mb-8">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 gradient-text">
+                    Darlington Owusu
+                </h1>
+                <p class="text-2xl md:text-3xl text-gray-400 font-light">
+                    Website Designer & Application Developer
+                </p>
+            </div>
+
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Crafting elegant digital experiences through innovative design and development solutions
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="#contact" class="btn-primary">Get In Touch</a>
+                <a href="#about" class="btn-outline">Learn More</a>
+            </div>
+
+            <a href="#about" class="absolute bottom-8 left-1/2 animate-bounce cursor-pointer" style="transform: translateX(-50%);">
+                <svg class="icon-sm" viewBox="0 0 24 24">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-4" style="background-color: var(--bg-dark);">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">About Me</h2>
+            <div class="divider"></div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start mt-16">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-300">
+                        Hello! I'm <span class="text-primary font-semibold">Darlington Owusu</span>, 
+                        a passionate website designer and application developer dedicated to creating 
+                        exceptional digital experiences that make a difference.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        With a keen eye for design and a strong foundation in development, I specialize 
+                        in transforming ideas into elegant, functional solutions. My journey in technology 
+                        has equipped me with the skills to bridge the gap between aesthetics and functionality, 
+                        ensuring every project not only looks great but performs flawlessly.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        I believe in the power of clean code, intuitive interfaces, and continuous learning. 
+                        Whether it's crafting a responsive website or developing a complex application, 
+                        I approach each project with dedication, creativity, and attention to detail.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Application Development Card -->
+                    <div class="card p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg" style="background-color: rgba(63, 184, 227, 0.1);">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M16 18l2-2 4 4M16 6l2 2-4 4M8 6L6 8l-4-4M8 18l-2-2 4-4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Application Development</h3>
+                                <p class="text-gray-400">Building robust, scalable applications with modern technologies and best practices</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Website Design Card -->
+                    <div class="card p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg" style="background-color: rgba(63, 184, 227, 0.1);">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Website Design</h3>
+                                <p class="text-gray-400">Creating visually stunning and user-friendly interfaces that captivate audiences</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Innovation Card -->
+                    <div class="card p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg" style="background-color: rgba(63, 184, 227, 0.1);">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+                                <p class="text-gray-400">Constantly exploring new technologies and approaches to deliver cutting-edge solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="hero-bg py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">Education</h2>
+            <div class="divider"></div>
+            <p class="text-center text-gray-400 text-lg max-w-2xl mx-auto mb-16">
+                My educational journey has provided me with a strong technical foundation 
+                and critical thinking skills essential for success in the tech industry.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Senior High School Card -->
+                <div class="card p-8 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 rounded-full" 
+                         style="background-color: rgba(63, 184, 227, 0.05); transform: translate(50%, -50%); transition: transform 0.5s;">
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 rounded-lg" style="background-color: rgba(63, 184, 227, 0.1);">
+                                <svg class="icon-sm" viewBox="0 0 24 24">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Senior High School</h3>
+                                <p class="text-sm text-accent">Graduate</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-xl font-semibold text-primary mb-2">Comboni Technical Institute</h4>
+                            <div class="flex items-center gap-2 text-gray-400">
+                                <svg class="icon-sm" viewBox="0 0 24 24" style="stroke: currentColor;">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span>Volta Region, Ghana</span>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-300">
+                            Completed comprehensive technical education with focus on practical skills and theoretical knowledge in technology and engineering.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Junior High School Card -->
+                <div class="card p-8 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 rounded-full" 
+                         style="background-color: rgba(63, 184, 227, 0.05); transform: translate(50%, -50%); transition: transform 0.5s;">
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 rounded-lg" style="background-color: rgba(63, 184, 227, 0.1);">
+                                <svg class="icon-sm" viewBox="0 0 24 24">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Junior High School</h3>
+                                <p class="text-sm text-accent">Completed</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="text-xl font-semibold text-primary mb-2">Mighty Rock Bilingual School</h4>
+                            <div class="flex items-center gap-2 text-gray-400">
+                                <svg class="icon-sm" viewBox="0 0 24 24" style="stroke: currentColor;">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span>Ghana</span>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-300">
+                            Built strong foundational knowledge across core subjects with emphasis on academic excellence and personal development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4" style="background-color: var(--bg-dark);">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="divider"></div>
+            <p class="text-center text-gray-400 text-lg max-w-2xl mx-auto mb-16">
+                Have a project in mind or want to discuss opportunities? 
+                I'd love to hear from you. Let's create something amazing together!
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                <!-- Email Card -->
+                <div class="card p-8">
+                    <a href="mailto:owusudarlington2007@gmail.com" class="flex flex-col items-center text-center space-y-4 group">
+                        <div class="p-4 rounded-full" style="background-color: rgba(63, 184, 227, 0.1); transition: transform 0.3s;">
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Email</h3>
+                            <p class="text-lg text-gray-300 hover:text-primary transition-colors">
+                                owusudarlington2007@gmail.com
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Phone Card -->
+                <div class="card p-8">
+                    <a href="tel:0505164494" class="flex flex-col items-center text-center space-y-4 group">
+                        <div class="p-4 rounded-full" style="background-color: rgba(63, 184, 227, 0.1); transition: transform 0.3s;">
+                            <svg class="icon-sm" viewBox="0 0 24 24">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                            <p class="text-lg text-gray-300 hover:text-primary transition-colors">
+                                0505164494
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h3 class="text-2xl font-semibold mb-6">Connect With Me</h3>
+                <div class="flex justify-center gap-4">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center gap-2">
+                        <svg class="icon-sm" viewBox="0 0 24 24" style="stroke: var(--bg-dark);">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                        Facebook
+                    </a>
+                    <a href="https://wa.me/233505164494" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center gap-2">
+                        <svg class="icon-sm" viewBox="0 0 24 24" style="stroke: var(--bg-dark);">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t" style="background-color: var(--card-dark); border-color: rgba(255, 255, 255, 0.1);">
+        <div class="max-w-6xl mx-auto text-center space-y-2">
+            <p class="text-gray-400">
+                © <span id="year"></span> Darlington Owusu. All rights reserved.
+            </p>
+            <p class="text-sm text-gray-500">
+                Designed & Developed with passion
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
